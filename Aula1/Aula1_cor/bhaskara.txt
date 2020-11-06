@@ -1,0 +1,9 @@
+# Explicitar o que vai ser impresso
+#3.5
+1) Estabelecer a, b e c em a**x + b*x + c = 0 
+2) Se a = 0 -> não utiliza bhaskara
+3) Senão, utilizar a formula de bhaskara para descobrir o valor de x 
+3) Descobrir o delta (delta = b**2 - 4*a*c)
+4) Se delta < 0 -> não exite raiz real
+5) Se delta > 0 -> x1 = (-b + sqrt(delta))/(2*)a e x2 = (-b - sqrt(delta))/(2*a)
+6) Se delta = 0 -> x = -b/(2*a)
