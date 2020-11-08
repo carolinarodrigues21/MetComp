@@ -31,7 +31,7 @@ def angulo(x,y):
     modx = sqrt(x[0]**2 + x[1]**2 + x[2]**2)      #módulo do vetor x
     mody = sqrt(y[0]**2 + y[1]**2 + y[2]**2)      #módulo do vetor y
         
-    cos = escalar / (modx * mody)                 #define o valor do cosseno entre esses vetores 
+    cos = round(escalar / (modx * mody))          #define o valor do cosseno entre esses vetores 
     teta = degrees(np.arccos(cos))                #converte o valor em radianos para graus
     return teta
 
