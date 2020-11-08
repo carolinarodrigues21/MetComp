@@ -10,10 +10,10 @@ Original file is located at
 numero = int(input("Quer saber o fatorial de que numero? \n"))
 
 resultado=1
-count=1
+contador=1
 
-while count <= numero:
-    resultado *= count
-    count += 1
+while contador <= numero:
+    resultado *= count      #começa no 1 e multiplica por 2,3,... ate chegar ao numero desejado, gerando o fatorial
+    contador += 1
 
 print(resultado)
