@@ -29,7 +29,7 @@ else:
     print("%.2f +- %.2f i" %(re,im))
     
   
-  elif (delta == 0):
+  elif fabs(delta)< 10**-12:    #delta é float, logo precisa usar a aproximacao
     x = -b/(2*a)
     print("A equação %.2f x**2 + %.2f x + %.2f possui:" %(a,b,c))
     print("uma raiz real ")
