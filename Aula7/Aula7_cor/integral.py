@@ -39,7 +39,7 @@ precisao = 10**-6
 k = np.array(range(0,21,1))   #como 2**20 é um número grande, logo o k seria menor que esse valor
 
 #achar a ordem de K pela convergência no método dos trapézios
-i = 0
+i = 1
 for i in k:
   if abs(trapezio(fun, a,b, k[i])- trapezio(fun, a, b ,k[i-1])) < precisao: 
     break
@@ -70,4 +70,4 @@ Contudo, isso funciona apenas em funções pares, em funções impares, como sen
   
 
 print("a integral da Gaussiana calculada pelo método dos trapézios nos intervalo [%.d,%.d] é %.3f e o k que gera a melhor aproximação é %d" %(a,b,trapezio(fun, a,b, k[i]),i))
-print("pelo método de Simpson a integral é é %.3f e o k que gera a melhor aproximação é %d" %(Sx,j))
+print("pelo método de Simpson a integral é %.3f e o k que gera a melhor aproximação é %d" %(Sx,j))
