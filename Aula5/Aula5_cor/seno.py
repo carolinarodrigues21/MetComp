@@ -1,8 +1,8 @@
 '''
-Não printa o valor do seno 'exato'
-[linha 39]- O erro esperado está calculado errado
+Não printa o valor do seno 'exato' (linha 42)
+[linha 39]- O erro esperado está calculado errado (linha 40)
 [linha 36]- Mal nome de variável, 'prox_termo' não é o próximo termo da série, mas a série em um termo a mais;
-'valor_esperado' é o próximo termo da série.
+'valor_esperado' é o próximo termo da série. (feito)
 4.5/6
 '''
 # -*- coding: utf-8 -*-
@@ -29,19 +29,20 @@ def taylor_seno(x,n):  #função que calcula o seno atraves da serie de Taylor
 
 
 #letra c
-print("- 1c) variamos o valor de x, mas truncamos o valor do termo em 4")
+print("- 1c) variamos o valor de x, mas truncamos o valor do termo em 4 \n")
 nc = 4
 xc = 0
 for xc in range(1,6):
   sen_c = taylor_seno(xc,nc)
   x0 = 0
-  prox_termo = taylor_seno(xc+1,nc)
-  valor_esp = (xc - x0)**(nc+1)/mt.factorial(nc+1)
+  serie_com_prox_termo = taylor_seno(xc+1,nc)           #serie de taylor com mais um termo
+  prox_termo = (xc - x0)**(nc+1)/mt.factorial(nc+1)     #proximo termo da serie 
+  erro = sen_c - mt.sin(xc)
   print("o seno de %.2f" %(xc))
-  print("ordem:%.d , serie: %.5f , proximo termo será: %.5f , valor esperado: %.5f" %(nc,sen_c,prox_termo, valor_esp))
+  print("ordem:%.d , seno pela serie: %.5f , proximo termo será: %.5f , seno 'exato': %.5f , erro esperado: %.5f \n" %(nc,sen_c,prox_termo,mt.sin(xc),erro))
 
 #letra d
-print("\n- 1d) Gráfico que mostra como o seno varia a medida que n e x variam")
+print("\n- 1d) Gráfico que mostra como o seno varia a medida que n e x variam \n")
 xd = np.linspace(0,3*np.pi/2,51)
 y = np.sin(xd)
 y2 = taylor_seno(xd,2)
