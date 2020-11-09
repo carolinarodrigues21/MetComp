@@ -37,14 +37,14 @@ def Euler(drdt,x,ti,tf,n):   #definida a função de Euler
             x[k+1]= x[k] + h*drdt(x[k],t[k])
     return t,x
 
-n=86400    # utilizadas as precisões dadas a seguir de minuto, hora e dia respectivamente:60, 3600, 86400
+n=86400    # utilizadas as precisões dadas a seguir de minuto, hora e dia respectivamente:60*24*365, 24*365, 86400
 ti= 0
 tf= 31536000 
 xi= np.array([1.496*(10**11),0,0,2.97*(10**4)])
 
 from rk4 import RungeKutta4
-x, t = RungeKutta4(drdt, xi, ti, tf, n)  #alterado o "f" para "drdt"
-plt.plot(x[:,0], x[:,1])    #plotado o gráfico
+x, t = RungeKutta4(drdt, xi, ti, tf, n)   #alterado o "f" para "drdt"
+plt.plot(x[:,0], x[:,1])                  #plotado o gráfico
 plt.title("Órbita da Terra em volta do Sol")
 plt.show() 
 
