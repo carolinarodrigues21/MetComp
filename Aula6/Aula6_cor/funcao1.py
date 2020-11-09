@@ -16,7 +16,7 @@ Original file is located at
 import matplotlib.pyplot as plt
 import numpy as np
 
-print("esse programa faz o gráfico da função f(x) = eˆ(-x) - sin(x*pi/2) ")
+print("esse programa faz o gráfico da função f(x) = eˆ(-x) - sin(x*pi/2)\n ")
 def f(x):
   return np.exp(-x) - np.sin(np.pi*x/2)
 
@@ -24,6 +24,8 @@ x = np.linspace(0,4,200)
 y = f(x)
 
 plt.plot(x,y)
+plt.xlabel('x',fontsize = 15)
+plt.ylabel('f(x)',fontsize = 15)
 plt.title("Função")
 plt.grid(True)
 plt.savefig("funcao1.pdf")
