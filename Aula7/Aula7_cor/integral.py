@@ -39,16 +39,17 @@ precisao = 10**-6
 k = np.array(range(0,21,1))   #como 2**20 é um número grande, logo o k seria menor que esse valor
 
 #achar a ordem de K pela convergência no método dos trapézios
-i = 1
-for i in k:
-  if abs(trapezio(fun, a,b, k[i])- trapezio(fun, a, b ,k[i-1])) < precisao: 
+k_trapezio = 0
+for i in range(len(k)):
+  if abs(trapezio(fun, a,b, k[i+1])- trapezio(fun, a, b ,k[i])) < precisao: 
     break
   else:
-    i+=1
+    k_trapezio = k[i+2] 
+ #na primeira iteracao nao vai atingir a precisao, entao vai pro else. na segunda iteracao o i vai ser 1, mas o k será em relação ao 2, pois o programa vai breakar, entao o k que vai parar vai ser k[2]
 
 #achar a ordem de K pela convergência no método de Simpson usando o método dos trapézios
-j = 0    
-for j in k:
+count_simpson = 0    
+for j in range(len(k)):
   if j == 0:
    Tkj = trapezio(fun, a,b, k[j])      #esse é o Tk-1 da formula
    Tkj1 = trapezio(fun, a,b, k[j+1])   #esse é o TK da formula
@@ -60,14 +61,13 @@ for j in k:
     if abs(Sx - S_anterior) < precisao:
       break
     else:
-      j+=1
+      k_simpson = k[j+1]
   S_anterior = Sx   #como o primeiro valor de j é 0, o primeiro S_anterior(Sx-1) será o S0
-
 
 
 """ Para otimizar o programa: quando a integral vai de -a até a podemos fazer 2 * integral da função em [0,a].
 Contudo, isso funciona apenas em funções pares, em funções impares, como sen(x), a integral de [-a,a] dá 0, logo essa otimização não funcionaria."""
   
 
-print("a integral da Gaussiana calculada pelo método dos trapézios nos intervalo [%.d,%.d] é %.3f e o k que gera a melhor aproximação é %d" %(a,b,trapezio(fun, a,b, k[i]),i))
-print("pelo método de Simpson a integral é %.3f e o k que gera a melhor aproximação é %d" %(Sx,j))
+print("a integral da Gaussiana calculada pelo método dos trapézios nos intervalo [%.d,%.d] é %.3f e o k que gera a melhor aproximação é %d" %(a,b,trapezio(fun, a,b,k_trapezio),k_trapezio))
+print("pelo método de Simpson a integral é %.3f e o k que gera a melhor aproximação é %d" %(Sx,k_simpson))
