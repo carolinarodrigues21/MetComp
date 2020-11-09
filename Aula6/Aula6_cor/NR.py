@@ -2,9 +2,9 @@
 Gabriella
  - [linha 45] Erro na condição para o programa não rodar para um x
    inicial com derivada próxima de zero:
-   usou '>' em vez de '<'
+   usou '>' em vez de '<' (feito)
  - [linha 52] Erro na função para o valor da raíz:
-   usou 'dxi' em vez de 'derivada(xi)'
+   usou 'dxi' em vez de 'derivada(xi)' (corrigido)
    2.5/5
 '''
 # -*- coding: utf-8 -*-
@@ -19,7 +19,7 @@ Original file is located at
 import matplotlib.pyplot as plt
 import numpy as np
 
-print("Esse programa implementa o método Newton-Raphson de para achar a primeira raiz positiva de f(x) = eˆ(-x) - sin(x*pi/2) ")
+print("Esse programa implementa o método Newton-Raphson de para achar a primeira raiz positiva de f(x) = eˆ(-x) - sin(x*pi/2) \n")
 
 #função que desejamos encontrar a raiz
 def f(x):
@@ -38,20 +38,21 @@ plt.grid(True)
 plt.show()
 
 xi = float(input("Olhe o gráfico acima e determine o x desejado \n"))
-limite = 100  #número maximo de iterações
+limite = 100             #número maximo de iterações
 precisao = 1*10**-7
-dxi = derivada(xi) #derivada no ponto xi
-precisao_derivada = 1*10**-3
+precisao_derivada = 1*10**-5
+dxi = derivada(xi)
 
-if abs(dxi) > precisao_derivada:  # numeros cujas derivadas não são zero, mas serão muito perto e darão uma raiz muito distante
+#essa parte nao esta funcionando NS PQ???
+if abs(dxi) < precisao_derivada:  # numeros cujas derivadas não são zero, mas serão muito perto e darão uma raiz muito distante
   print("Não é possivel encontrar a raiz por este valor de x")
 
 else:
   Nit = 0  #contador para o número de iterações
   delta = 100
   while abs(delta) > precisao and Nit<limite:
-    x = xi - f(xi)/dxi        # valor próximo x que será usado
-    delta = (x - xi)          #função com o valor de x
+    x = xi - f(xi)/derivada(xi)        # valor próximo x que será usado
+    delta = (x - xi)                   #função com o valor de x
     xi = x
     Nit = Nit + 1
   print("O número de iterações : %.d \ne a raiz é %.3f" %(Nit,x))
