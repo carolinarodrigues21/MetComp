@@ -21,7 +21,7 @@ Original file is located at
 import matplotlib.pyplot as plt
 import numpy as np
 
-print("Esse programa implementa o método Newton-Raphson de para achar os pontos de Lagrange do sistema Terra-Sol")
+print("Esse programa implementa o método Newton-Raphson de para achar os pontos de Lagrange do sistema Terra-Sol \n")
 
 G = 6.674 * 10**-11       #Constante gravitacional
 M = 1.989 * 10**30        #Massa do Sol
