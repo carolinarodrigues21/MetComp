@@ -17,7 +17,7 @@ print("esse programa deseja calcular a integral da Gaussiana")
 def fun(y):     
   return 1/mt.sqrt(2*mt.pi) * mt.exp(-y**2/2)
 
-#definição do método dos trapézios
+#definição do método dos trapézios 
 def trapezio(fun,a,b,k):
   delta = (b - a)/2**k
   t = 1 #é o j do somátorio (chama de t por ser do trapézio)
@@ -29,7 +29,7 @@ def trapezio(fun,a,b,k):
   T = delta/2 * (fun(a) + 2*sum(ft) + fun(b))
   return T
 
-#definição do método de Simpson
+#definição do método de Simpson pelo método dos trapézios
 def simpson(Tki,Tki1):
   return Tki1 + (Tki1 - Tki)/3
 
