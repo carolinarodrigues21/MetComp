@@ -22,25 +22,36 @@ def Euler(ti,tf,xi,N,derivada):
     neq = len(xi)
     x = np.zeros((N,neq))
     x[0]=xi
-  for k in range(1,len(t)-1):
+  for k in range(1,len(t)):
     x[k] = x[k-1] + h*derivada(x[k-1],t[k-1])
   return x,t
 
+#com resistencia do ar
 def derivada(S,t):
     B2_m = 4 * 10**-5
     v = 700
     g = 9.87
     return np.array([S[1], -B2_m*np.sqrt(S[1]**2 + S[3]**2)*S[1], S[3], -B2_m*np.sqrt(S[1]**2 + S[3]**2) *S[3]- g])
 
+#sem resistencia do ar
+def derivada_(S_,t_):
+    B2_m = 0
+    v = 700
+    g = 9.87
+    return np.array([S_[1], -B2_m*np.sqrt(S_[1]**2 + S_[3]**2)*S_[1], S_[3], -B2_m*np.sqrt(S_[1]**2 + S_[3]**2) *S_[3]- g])
+
 ti = 0                      # t inical
 tf = 100                    # t final
 theta = np.pi/4
-Si = np.array([0,700*np.sqrt(2)/2,0, 700*np.sqrt(2)/2])      # condicoes iniciais
+Si = np.array([0,700*np.cos(theta),0, 700*np.sin(theta)])  # condicoes iniciais
 N = 50                      # numero de pontos desejados
 S,t = Euler(ti,tf,Si,N,derivada)
+S_,t_ = Euler(ti,tf,Si,N,derivada_)
 
-plt.plot(S[:,0],S[:,2],'r-')
+plt.plot(S[:,0],S[:,2],'r-',label='com resistencia do ar')
+plt.plot(S_[:,0],S_[:,2],'b',label='sem resistencia do ar')
 plt.xlabel("posição x")
 plt.ylabel("posição y")
+plt.ylim(bottom = 0)
+plt.legend()
 plt.show()
-
