@@ -38,6 +38,8 @@ for xc in range(1,6):
   serie_com_prox_termo = taylor_seno(xc+1,nc)           #serie de taylor com mais um termo
   prox_termo = (xc - x0)**(nc+1)/mt.factorial(nc+1)     #proximo termo da serie 
   erro = sen_c - mt.sin(xc)
+  #termo_seguinte = taylor_seno(x,n+1) - taylor_seno(x,n)               #Calcular o valor do próximo termo 
+  #print("O termo seguinte é: ",termo_seguinte)                         #Esse termo deve ter a mesma ordem do erro
   print("o seno de %.2f" %(xc))
   print("ordem:%.d , seno pela serie: %.5f , proximo termo será: %.5f , seno 'exato': %.5f , erro esperado: %.5f \n" %(nc,sen_c,prox_termo,mt.sin(xc),erro))
 
